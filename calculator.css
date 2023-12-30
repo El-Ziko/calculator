@@ -6,7 +6,9 @@
 }
 body {
   display: flex;
-  background-color: #e3f9ff;
+  background: url("the-Crow-transparant.png") no-repeat center fixed;
+  background-color: #333;
+  background-size: cover;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -17,11 +19,13 @@ body {
   gap: 8px;
   max-width: 300px;
   background-color: #3a4452;
-  padding: 7px;
+  padding: 15px;
   border-radius: 25px;
   box-shadow: 1.5px 2px 0 3px blueviolet, 0 5px 8px rgba(0, 0, 0, 0.25);
 }
 input {
+  background-color: green;
+  font-size: 30px;
   grid-column: span 4;
   padding: 15px;
   border: 5px orange solid;
@@ -44,13 +48,14 @@ button {
 }
 button:hover {
   transition: 100ms;
-  background-color: blueviolet;
+  background-color: #ef4040;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.7);
 }
 div :nth-child(18):hover {
   transition: 100ms;
-  background-color: red;
+  background-color: #7b66ff;
 }
-div :nth-child(4n+1):hover {
+div :nth-child(4n + 1):hover {
   transition: 100ms;
   background-color: yellowgreen;
 }

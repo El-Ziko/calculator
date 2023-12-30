@@ -7,65 +7,49 @@
     <link rel="stylesheet" href="calculator.css" />
   </head>
   <body>
-    <div id="container">
-      <input type="button" value="" />
-      <button onclick="calculator+= '1'; console.log(`${calculator}`)">
-        1
+    <div id="container" onkeydown="pressEnter(event)">
+      <input type="button" id="myInput" />
+      <button onclick="displayMove('1')">1</button>
+      <button onclick="displayMove('2')">2</button>
+      <button onclick="displayMove('3')">3</button>
+      <button onclick="displayMove('+')">+</button>
+      <button onclick="displayMove('4')">4</button>
+      <button onclick="displayMove('5')">5</button>
+      <button onclick="displayMove('6')">6</button>
+      <button onclick="displayMove('-')">-</button>
+      <button onclick="displayMove('7')">7</button>
+      <button onclick="displayMove('8')">8</button>
+      <button onclick="displayMove('9')">9</button>
+      <button onclick="displayMove('*')">x</button>
+      <button onclick="displayMove('.')">.</button>
+      <button onclick="displayMove('0')">0</button>
+      <button
+        onclick=" calculator = '' ; displayMove(); localStorage.removeItem('score')"
+      >
+        C
       </button>
-      <button onclick="calculator+= '2'; console.log(`${calculator}`)">
-        2
-      </button>
-      <button onclick="calculator+= '3'; console.log(`${calculator}`)">
-        3
-      </button>
-      <button onclick="calculator+= ' + '; console.log(`${calculator}`)">
-        +
-      </button>
-
-      <button onclick="calculator+= '4'; console.log(`${calculator}`)">
-        4
-      </button>
-      <button onclick="calculator+= '5'; console.log(`${calculator}`)">
-        5
-      </button>
-      <button onclick="calculator+= '6'; console.log(`${calculator}`)">
-        6
-      </button>
-      <button onclick="calculator+= ' - '; console.log(`${calculator}`)">
-        -
-      </button>
-
-      <button onclick="calculator+= '7'; console.log(`${calculator}`)">
-        7
-      </button>
-      <button onclick="calculator+= '8'; console.log(`${calculator}`)">
-        8
-      </button>
-      <button onclick="calculator+= '9'; console.log(`${calculator}`)">
-        9
-      </button>
-      <button onclick="calculator+= ' * '; console.log(`${calculator}`)">
-        x
-      </button>
-      <button onclick="calculator+= '.'; console.log(`${calculator}`) ">
-        .
-      </button>
-      <button onclick="calculator+= '0'; console.log(`${calculator}`) ">
-        0
-      </button>
-      <button onclick="calculator+= '00'; console.log(`${calculator}`) ">
-        00
-      </button>
-
-      <button onclick="calculator+= '/'; console.log(`${calculator}`)">
-        /
-      </button>
-      <button onclick="calculator.eval(''); console.log(`${calculator}`)">
+      <button onclick="displayMove('/')">/</button>
+      <button onclick=" calculIt()">
         =
       </button>
     </div>
     <script>
-      let calculator = "";
+      let calculator = JSON.parse(localStorage.getItem("calculator")) || "";
+      document.querySelector("#myInput").value = `${calculator}`;
+      function displayMove(valu = "") {
+        calculator += valu;
+        document.querySelector("#myInput").value = `${calculator}`;
+        localStorage.setItem("calculator", JSON.stringify(calculator));
+      }
+      function calculIt(){
+        calculator = eval(calculator);
+        document.querySelector('#myInput').value = `${calculator}`;
+      }
+      function pressEnter(event){
+        if(event.key === 'Enter'){
+          calculIt();
+        }
+      }
     </script>
   </body>
 </html>
